@@ -21,3 +21,7 @@ target
 *.jar
 *.war
 *.ear
+
+# Kubernetes Helm
+requirements.lock
+**/charts/*.tgz
