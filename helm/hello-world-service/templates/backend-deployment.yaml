@@ -19,8 +19,8 @@ spec:
         - name: {{ .Values.registryPullSecrets }}
       containers:
         - name: {{ .Chart.Name }}-backend
-          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
-          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://{{ .Release.Name }}-postgresql/postgres
@@ -32,12 +32,12 @@ spec:
                   name: {{ .Release.Name }}-postgresql
                   key: postgres-password
           ports:
-            - containerPort: {{ .Values.backend.image.internalPort }}
+            - containerPort: {{ .Values.image.internalPort }}
           livenessProbe:
             httpGet:
               scheme: HTTP
               path: /health
-              port: {{ .Values.backend.image.internalPort }}
+              port: {{ .Values.image.internalPort }}
             initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
@@ -45,7 +45,7 @@ spec:
             httpGet:
               scheme: HTTP
               path: /health
-              port: {{ .Values.backend.image.internalPort }}
+              port: {{ .Values.image.internalPort }}
             initialDelaySeconds: 20
             periodSeconds: 5
             timeoutSeconds: 5

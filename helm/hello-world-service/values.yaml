@@ -4,16 +4,15 @@
 replicaCount: 1
 registryPullSecrets: quay-registry-secret
 
-backend:
-  image:
-    repository: quay.io/alfresco/anaxes-hello-world-service
-    tag: 0.1-SNAPSHOT
-    pullPolicy: Always
-    internalPort: 8080
-  service:
-    name: hello-world-app-backend
-    # If running on AWS choose LoadBalancer as service Type
-    type: NodePort
-    externalPort: 80
-  ingress:
-    path: /hello-service
+image:
+  repository: quay.io/alfresco/anaxes-hello-world-service
+  tag: 0.1-SNAPSHOT
+  pullPolicy: Always
+  internalPort: 8080
+service:
+  name: hello-world-app-backend
+  # If running on AWS choose LoadBalancer as service Type
+  type: NodePort
+  externalPort: 80
+ingress:
+  path: /hello-service

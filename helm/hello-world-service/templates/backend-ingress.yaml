@@ -10,8 +10,8 @@ spec:
   rules:
   - http:
       paths:
-      - path: {{ .Values.backend.ingress.path }}
+      - path: {{ .Values.ingress.path }}
         backend:
           serviceName: {{ template "hello-world-backend.fullname" . }}
-          servicePort: {{ .Values.backend.service.externalPort }}
+          servicePort: {{ .Values.service.externalPort }}
 
