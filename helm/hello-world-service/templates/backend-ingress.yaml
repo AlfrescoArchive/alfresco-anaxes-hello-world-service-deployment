@@ -1,8 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Release.Namespace }}-nginx-ingress-controller
-  name: nginx-ingress-controller
+  name: {{ template "hello-world-backend.fullname" . }}-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
     ingress.kubernetes.io/rewrite-target: /
