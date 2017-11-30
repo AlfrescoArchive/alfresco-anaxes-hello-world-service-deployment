@@ -16,9 +16,13 @@ then:
 
 # Run Docker Image
 
-To run the Docker image on port 8080:
+You first need the postgres host.  If you run postgres via Docker and have named the container 'postgres' you can run:
 
-    docker run -p8080:8080 anaxes-hello-world-service:latest
+    docker inspect -f "{{ .NetworkSettings.IPAddress }}" postgres
+
+Then run the service Docker image on port 8080:
+
+    docker run -p8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://<postgres-host>/postgres -e SPRING_DATASOURCE_USERNAME=postgres anaxes-hello-world-service:latest
 
 # Helm
 
