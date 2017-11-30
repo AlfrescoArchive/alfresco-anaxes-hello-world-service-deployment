@@ -4,7 +4,7 @@ This project contains the artifacts to deploy the [Hello World Service](https://
 
 The service connects to a Postgres database to retrieve the welcome message to return.
 
-# Build
+# Build Docker Image
 
 To build the Docker image run the script which gets the service jar:
 
@@ -14,6 +14,12 @@ then:
 
     docker build -t anaxes-hello-world-service .
 
-# Run
+# Run Docker Image
 
-TODO
+To run the Docker image on port 8080:
+
+    docker run -p8080:8080 anaxes-hello-world-service:latest
+
+# Helm
+
+See [helm/hello-world-service](helm/hello-world-service)
