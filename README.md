@@ -16,13 +16,17 @@ then:
 
 # Run Docker Image
 
-You first need the postgres host.  If you run postgres via Docker and have named the container 'postgres' you can run:
+You first need the postgres host.  If you run postgres via Docker and have named the container 'postgres' you can get the host from Docker:
 
-    docker inspect -f "{{ .NetworkSettings.IPAddress }}" postgres
+    SPRING_DATASOURCE_HOST=`docker inspect -f "{{ .NetworkSettings.IPAddress }}" postgres`
 
 Then run the service Docker image on port 8080:
 
-    docker run -p8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://<postgres-host>/postgres -e SPRING_DATASOURCE_USERNAME=postgres anaxes-hello-world-service:latest
+    docker run -p8080:8080 -e SPRING_DATASOURCE_URL=jdbc:postgresql://$SPRING_DATASOURCE_HOST/postgres -e SPRING_DATASOURCE_USERNAME=postgres --name hello-world-backend anaxes-hello-world-service:latest
+
+You should then be able to access the REST API at:
+
+    http://localhost:8080/hello/welcome
 
 # Helm
 
