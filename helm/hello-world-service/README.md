@@ -16,6 +16,8 @@ This chart depends on the following charts to provide the database and ingress p
 - Postgresql - [https://github.com/kubernetes/charts/tree/master/stable/postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql)
 - Nginx Ingress - [https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
 
-You can deploy this chart to a minikube or AWS cluster with `helm install hello-world-service`
+You can deploy this chart to a minikube or AWS cluster with
+
+    helm install hello-world-service
 
 Once deployed you can use the `get-backend-url.sh` script to get the publicly accessible URL for the REST API.
