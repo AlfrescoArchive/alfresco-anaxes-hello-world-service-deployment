@@ -1,0 +1,13 @@
+name: hello-world-service
+version: 0.1
+description: Hello world sample service to demonstrate deployment capabilities
+keywords:
+  - alfresco
+  - anaxes
+  - hello
+  - world
+home: https://github.com/Alfresco/alfresco-anaxes-hello-world
+sources:
+  - https://github.com/Alfresco/alfresco-anaxes-hello-world-service-deployment/helm
+maintainers:
+  - name: Alfresco
