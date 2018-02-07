@@ -16,3 +16,6 @@ service:
   externalPort: 80
 ingress:
   path: /hello-service
+postgresql:
+    persistence:
+      enabled: false
