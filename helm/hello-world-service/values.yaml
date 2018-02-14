@@ -18,4 +18,5 @@ ingress:
   path: /hello-service
 postgresql:
     persistence:
-      enabled: false
+        subPath: ""
+        
