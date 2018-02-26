@@ -16,3 +16,19 @@ service:
   externalPort: 80
 ingress:
   path: /hello-service
+persistence: 
+  enabled: true
+  baseSize: 10Gi
+  efs:
+    enabled: false
+    dns: fs-example.efs.us-east-1.amazonaws.com
+    path: "/"
+  
+database:
+  persistence:
+    size: 2Gi
+
+postgresql:
+  persistence:
+    subPath: "hello/postgres-data"
+    existingClaim: "hello-world-database-data"

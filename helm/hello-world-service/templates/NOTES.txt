@@ -1,1 +1,5 @@
 Get the backend URL by running "scripts/get-backend-url.sh {{ .Release.Name }} {{ .Release.Namespace }}".
+
+Depending on the storage you use for volumes you should be able to access the persisted db data in the following locations:
+  - On minikube the usual location is /tmp/hostpath-provisioning
+  - With docker-for-desktop the usual location is /Users/YourUser/.docker/Volumes/
