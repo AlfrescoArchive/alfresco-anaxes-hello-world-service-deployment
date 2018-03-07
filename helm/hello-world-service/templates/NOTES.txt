@@ -1,1 +1,3 @@
 Get the backend URL by running "scripts/get-backend-url.sh {{ .Release.Name }} {{ .Release.Namespace }}".
+
+You should be able to access the persisted db data on minikube by going to /tmp/hostpath-provisioning after ssh'ing in the machine.

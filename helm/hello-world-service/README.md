@@ -20,4 +20,15 @@ You can deploy this chart to a minikube or AWS cluster with
 
     helm install hello-world-service
 
+If you are deploying the application to an AWS cluster and you want to use an EFS that is in the same VPC as your cluster, please set enabled property under `efs` to true and dns to your EFS url in `values.yaml`.
+Example:
+
+    persistence: 
+        enabled: true
+        baseSize: 10Gi
+        efs:
+            enabled: true
+            dns: fs-example.efs.us-east-1.amazonaws.com
+            path: "/"
+
 Once deployed you can use the `get-backend-url.sh` script to get the publicly accessible URL for the REST API.

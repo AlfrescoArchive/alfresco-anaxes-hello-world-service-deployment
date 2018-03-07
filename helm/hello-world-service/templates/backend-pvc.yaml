@@ -1,0 +1,35 @@
+{{- if and .Values.persistence.enabled (not .Values.persistence.existingClaim) }}
+{{- if .Values.persistence.efs.enabled -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "{{ .Release.Namespace }}-backend-volume"
+spec:
+  capacity:
+    storage: {{ .Values.persistence.baseSize | quote }}
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: {{ .Values.persistence.reclaimPolicy | default "Recycle" }}
+  nfs:
+    server: "{{ .Values.persistence.efs.dns }}"
+    path: "{{ .Values.persistence.efs.path }}"
+  storageClassName: efs
+---
+{{- end -}}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: hello-world-database-data
+spec:
+  accessModes:
+  {{ if .Values.persistence.efs.enabled }}
+    - ReadWriteMany
+  volumeName: "{{ .Release.Namespace }}-backend-volume"
+  storageClassName: efs
+  {{ else }}
+    - ReadWriteOnce
+  {{ end }}
+  resources:
+    requests:
+      storage: {{ .Values.database.persistence.size | quote }}
+{{- end }}
