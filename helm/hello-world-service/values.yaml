@@ -29,6 +29,7 @@ database:
     size: 2Gi
 
 postgresql:
+  imageTag: "10.1"
   persistence:
     subPath: "hello/postgres-data"
     existingClaim: "hello-world-database-data"
