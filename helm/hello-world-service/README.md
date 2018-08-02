@@ -16,11 +16,19 @@ This chart depends on the following charts to provide the database and ingress p
 - Postgresql - [https://github.com/kubernetes/charts/tree/master/stable/postgresql](https://github.com/kubernetes/charts/tree/master/stable/postgresql)
 - Nginx Ingress - [https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress](https://github.com/kubernetes/charts/tree/master/stable/nginx-ingress)
 
-You can deploy this chart to a minikube or AWS cluster with
+You can deploy this chart to AWS cluster with
+```
+helm install alfresco-incubator/hello-world-service --namespace <namespace to deploy to>
+```
 
-    helm install hello-world-service
+For minikube deployments you will need to override the following parameter:
+```
+--set service.type=NodePort
+```
 
-If you are deploying the application to an AWS cluster and you want to use an EFS that is in the same VPC as your cluster, please set enabled property under `efs` to true and dns to your EFS url in `values.yaml`.
+If you are deploying the application to an AWS cluster and you want to use an EFS that is in the same VPC as your cluster, 
+please set enabled property under `efs` to true and dns to your EFS url in `values.yaml`.
+
 Example:
 
     persistence: 
