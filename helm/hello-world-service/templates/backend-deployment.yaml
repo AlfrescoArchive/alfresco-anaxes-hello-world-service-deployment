@@ -36,7 +36,7 @@ spec:
           livenessProbe:
             httpGet:
               scheme: HTTP
-              path: /health
+              path: /actuator/health
               port: {{ .Values.image.internalPort }}
             initialDelaySeconds: 30
             periodSeconds: 5
@@ -44,7 +44,7 @@ spec:
           readinessProbe:
             httpGet:
               scheme: HTTP
-              path: /health
+              path: /actuator/health
               port: {{ .Values.image.internalPort }}
             initialDelaySeconds: 20
             periodSeconds: 5

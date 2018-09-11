@@ -1,5 +1,5 @@
 name: hello-world-service
-version: 0.2
+version: 0.2.1
 description: Hello world sample service to demonstrate deployment capabilities
 keywords:
   - alfresco
